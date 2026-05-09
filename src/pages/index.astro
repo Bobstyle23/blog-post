@@ -5,8 +5,17 @@ import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE, GITHUB_URL } from '../consts';
 import Body from '../components/Body.astro';
 import Content from "../components/Content.astro"
+import Masthead from "../components/Masthead.astro"
 import {IoArrowForward} from "react-icons/io5"
+import { Image } from 'astro:assets'
+;
+const posts = Object.values(import.meta.glob('./posts/*.md', {eager: true})).sort(
+  (a: any, b: any) =>
+    new Date(b.frontmatter.createdAt).valueOf() -
+    new Date(a.frontmatter.createdAt).valueOf()
+)
 ---
+
 
 <!doctype html>
 <html lang="en">
@@ -17,13 +26,30 @@ import {IoArrowForward} from "react-icons/io5"
     <Header />
     <main class="pt-14">
       <h1 class="font-mplus text-center">My Works</h1>
+<Masthead />
       <Content>
         <section>
           <p class="mb-8 indent-4 whitespace-pre-wrap">As a frontend developer, I&apos;ve spent a significant amount of time building a wide variety of products from personal pet projects and large practice applications to real-world test assignments provided by employers. Throughout this journey, I&apos;ve worked with a broad range of frontend technologies, modern frameworks, UI libraries, state management solutions, API integrations, responsive design systems, and performance optimization techniques.
 
     I enjoy exploring different approaches to frontend development, whether it&apos;s creating scalable architectures, building reusable component systems, improving user experience, optimizing application performance, or integrating complex backend services and real-time features. Constantly working on diverse projects has helped me become adaptable, fast-learning, and comfortable with different tech stacks, development environments, and product requirements.
 
-            Beyond just writing code, I&apos;m passionate about building interfaces that feel intuitive, polished, and production-ready while maintaining clean, maintainable, and scalable codebases. <a href={GITHUB_URL} class="inline-flex items-center gap-1 indent-1 text-orange-500">Modern frontend in action<IoArrowForward className="inline"/></a></p>
+            Beyond just writing code, I&apos;m passionate about building interfaces that feel intuitive, polished, and production-ready while maintaining clean, maintainable, and scalable codebases
+
+            <a href={GITHUB_URL} class="inline-flex items-center gap-1 indent-1 text-orange-500">Modern frontend in action<IoArrowForward className="inline"/></a></p>
+        </section>
+        <section>
+          <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {posts.map((post) => (
+            <li class="text-center mb-4">
+              <a href={post.url}>
+                 <Image class="border border-slate-300 dark:border-zinc-700 rounded-xl" src={post.frontmatter.heroImage} alt="Thumbnail" width={720*2} aspectRatio={2.0} height={320}/>
+
+                <div class="mt-3 text-xl">{post.frontmatter.title}</div>
+                <div class="opacity-70">{post.frontmatter.description}</div>
+              </a>
+            </li>))
+          }
+          </ul>
         </section>
       </Content>
     </main>
