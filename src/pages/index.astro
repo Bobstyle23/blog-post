@@ -2,8 +2,10 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE, GITHUB_URL } from '../consts';
 import Body from '../components/Body.astro';
+import Content from "../components/Content.astro"
+import {IoArrowForward} from "react-icons/io5"
 ---
 
 <!doctype html>
@@ -13,37 +15,17 @@ import Body from '../components/Body.astro';
   </head>
   <Body>
     <Header />
-    <main>
-      <h1 class="font-mplus text-3xl text-red-600">🧑‍🚀 Hello, Astronaut!</h1>
-      <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-        serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-        website, blog, or portfolio with Astro.
-      </p>
-      <p>
-        This template comes with a few integrations already configured in your
-        <code>astro.config.mjs</code> file. You can customize your setup with
-        <a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-        React, or Vue to your project.
-      </p>
-      <p>Here are a few ideas on how to get started with the template:</p>
-      <ul>
-        <li>Edit this page in <code>src/pages/index.astro</code></li>
-        <li>Edit the site header items in <code>src/components/Header.astro</code></li>
-        <li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-        <li>Check out the included blog posts in <code>src/content/blog/</code></li>
-        <li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-      </ul>
-      <p>
-        Have fun! If you get stuck, remember to
-        <a href="https://docs.astro.build/">read the docs</a>
-        or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-      </p>
-      <p>
-        Looking for a blog template with a bit more personality? Check out
-        <a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-        by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-      </p>
+    <main class="pt-14">
+      <h1 class="font-mplus text-center">My Works</h1>
+      <Content>
+        <section>
+          <p class="mb-8 indent-4 whitespace-pre-wrap">As a frontend developer, I&apos;ve spent a significant amount of time building a wide variety of products from personal pet projects and large practice applications to real-world test assignments provided by employers. Throughout this journey, I&apos;ve worked with a broad range of frontend technologies, modern frameworks, UI libraries, state management solutions, API integrations, responsive design systems, and performance optimization techniques.
+
+    I enjoy exploring different approaches to frontend development, whether it&apos;s creating scalable architectures, building reusable component systems, improving user experience, optimizing application performance, or integrating complex backend services and real-time features. Constantly working on diverse projects has helped me become adaptable, fast-learning, and comfortable with different tech stacks, development environments, and product requirements.
+
+            Beyond just writing code, I&apos;m passionate about building interfaces that feel intuitive, polished, and production-ready while maintaining clean, maintainable, and scalable codebases. <a href={GITHUB_URL} class="inline-flex items-center gap-1 indent-1 text-orange-500">Modern frontend in action<IoArrowForward className="inline"/></a></p>
+        </section>
+      </Content>
     </main>
     <Footer />
   </Body>
