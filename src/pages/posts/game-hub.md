@@ -9,8 +9,9 @@ public: true
 layout: ../../layouts/BlogPost.astro
 title: GameHub
 createdAt: 1778406107592
-updatedAt: 1778411662685
-tags: []
+updatedAt: 1778511921672
+tags:
+  - Personal Project
 heroImage: /posts/game-hub_thumbnail.png
 ---
 
@@ -69,7 +70,6 @@ Key highlights include responsive grid layouts, optimized API integration, reusa
 One of the focuses of this project was creating reusable and scalable data-fetching patterns using React Query and TypeScript.
 
 ```ts
-
 export const useGames = (
   selectedGenre?: Genre,
   selectedPlatform?: Platform,
@@ -104,7 +104,6 @@ export const useGames = (
 
     staleTime: 1000 * 60 * 5,
   });
-
 ```
 
 <br/>
@@ -122,7 +121,7 @@ src/
  ├── pages/
  ├── services/
  └── stores/
- 
+
 ```
 
 <br/>
