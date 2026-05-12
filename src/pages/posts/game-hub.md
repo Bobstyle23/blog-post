@@ -9,7 +9,7 @@ public: true
 layout: ../../layouts/BlogPost.astro
 title: GameHub
 createdAt: 1778406107592
-updatedAt: 1778511921672
+updatedAt: 1778595180961
 tags:
   - Personal Project
 heroImage: /posts/game-hub_thumbnail.png
