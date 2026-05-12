@@ -17,7 +17,7 @@ export interface Props {
 }
 
 const {
-  content: { title, description, heroImage }
+  content: { title = "", description, heroImage }
 } = Astro.props
 ---
 
@@ -28,7 +28,7 @@ const {
   </head>
 
   <Body>
-    <Header />
+    <Header title={title} />
     <main class="pt-14">
       <Content className="pt-6 markdown-body">
         <div class="mb-8">
