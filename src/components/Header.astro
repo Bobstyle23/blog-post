@@ -4,6 +4,15 @@ import HeaderLink from './HeaderLink.astro';
 import { IoLogoGithub } from 'react-icons/io5';
 import { MdComputer } from 'react-icons/md';
 import ThemeToggle from "./ThemeToggleButton"
+import DropdownMenu from "./DropdownMenu"
+
+
+const allPosts = Object.values(import.meta.glob('../pages/posts/*.md', {eager: true}))
+const allTags = new Set<string>()
+allPosts.map(post => {
+  post.frontmatter.tags &&
+    post.frontmatter.tags.map((tag: string) => allTags.add(tag))
+})
 ---
 
 <header class="fixed z-20 w-full p-2 backdrop-blur-md">
@@ -22,6 +31,7 @@ import ThemeToggle from "./ThemeToggleButton"
       </div>
       <div class="flex-1"></div>
       <ThemeToggle client:visible />
+      <DropdownMenu client:visible tags={Array.from(allTags)}/>
     </nav>
   </div>
 </header>
