@@ -1,10 +1,11 @@
 ---
-import { SITE_TITLE, GITHUB_URL } from '../consts';
+import { SITE_TITLE, GITHUB_URL, HOMEPAGE_URL } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import { IoLogoGithub } from 'react-icons/io5';
-import { MdComputer } from 'react-icons/md';
+import { HiOutlineHome } from 'react-icons/hi';
 import ThemeToggle from "./ThemeToggleButton"
 import DropdownMenu from "./DropdownMenu"
+import LogoIcon from '../assets/LogoIcon';
 
 
 const allPosts = Object.values(import.meta.glob('../pages/posts/*.md', {eager: true}))
@@ -22,14 +23,15 @@ allPosts.map(post => {
         <h2
           class="font-mplus inline-flex items-center gap-4 p-2 text-lg font-semibold tracking-tighter"
         >
-          <MdComputer />Mukhammad Bobur
+          <LogoIcon />MukhammadBobur
         </h2>
       </a>
 
       <div class="hidden items-center gap-6 md:flex">
         <HeaderLink href={GITHUB_URL}><IoLogoGithub />Source</HeaderLink>
+        <HeaderLink href={HOMEPAGE_URL} target="_blank"><HiOutlineHome />Homepage</HeaderLink>
       </div>
-      <div class="flex-1"></div>
+     <div class="flex-1"></div>
       <ThemeToggle client:visible />
       <DropdownMenu client:visible tags={Array.from(allTags)}/>
     </nav>

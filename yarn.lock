@@ -1878,9 +1878,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bobstyle23-portfolio@workspace:.":
+"blog-post@workspace:.":
   version: 0.0.0-use.local
-  resolution: "bobstyle23-portfolio@workspace:."
+  resolution: "blog-post@workspace:."
   dependencies:
     "@astrojs/image": ^0.18.0
     "@astrojs/react": ^5.0.4

@@ -4,69 +4,75 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE, GITHUB_URL } from '../consts';
 import Body from '../components/Body.astro';
-import Content from "../components/Content.astro"
-import Masthead from "../components/Masthead.astro"
-import {IoArrowForward} from "react-icons/io5"
-import { Image } from 'astro:assets'
-import CreatedWithSection from "../components/CreatedWithSection.astro";
+import Content from '../components/Content.astro';
+import Masthead from '../components/Masthead.astro';
+import { IoArrowForward } from 'react-icons/io5';
+import { Image } from 'astro:assets';
+import CreatedWithSection from '../components/CreatedWithSection.astro';
 
-const posts = Object.values(import.meta.glob('./posts/*.md', {eager: true})).sort(
+const posts = Object.values(import.meta.glob('./posts/*.md', { eager: true })).sort(
   (a: any, b: any) =>
-    new Date(b.frontmatter.createdAt).valueOf() -
-    new Date(a.frontmatter.createdAt).valueOf()
-)
+    new Date(b.frontmatter.createdAt).valueOf() - new Date(a.frontmatter.createdAt).valueOf()
+);
 ---
-
 
 <!doctype html>
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <link rel="shortcut icon" href="../../public/bobstyle23-favicon.svg" type="image/x-icon">
   </head>
   <Body>
     <Header />
     <main class="pt-14">
-<Masthead />
+      <Masthead />
       <Content>
         <section>
-          <p class="mb-8 indent-4 whitespace-pre-wrap">Building software is a continuous learning process, and this blog serves as my digital notebook. Here I share practical lessons, technical discoveries, project case studies, and thoughts gathered while working with modern frontend technologies.
+          <p class="mb-8 indent-4">
+            Building software is a continuous learning process, and this blog serves as my digital
+            notebook. <br/><br/>Here I share practical lessons, technical discoveries, project case studies,
+            and thoughts gathered while working with modern frontend technologies. <br/><br/>From React and
+            Next.js to TypeScript, React Native, application architecture, performance optimization,
+            and user experience, I write about the challenges I encounter, the solutions I
+            experiment with, and the ideas that shape better products and better code. <br/><br/>My goal is
+            simple: document the journey, share useful knowledge, and help other developers learn
+            from both the successes and the mistakes that come with building real-world
+            applications.
 
-From React and Next.js to TypeScript, React Native, application architecture, performance optimization, and user experience, I write about the challenges I encounter, the solutions I experiment with, and the ideas that shape better products and better code.
+            <br/><br/>
 
-My goal is simple: document the journey, share useful knowledge, and help other developers learn from both the successes and the mistakes that come with building real-world applications.
-<a href={GITHUB_URL} class="text-center indent-1 text-orange-500">Modern frontend in action <IoArrowForward className="inline"/></a>
-
+            <a href={GITHUB_URL} class="text-center indent-1 text-orange-500"
+              >Modern frontend in action <IoArrowForward className="inline" /></a
+            >
           </p>
         </section>
         <section>
-          <ul class="grid grid-cols-1 gap-6 md:grid-cols-2 mb-12">
-  {posts.map((post) => (
-    <li class="flex">
-      <a href={post.url} class="w-full">
-                <div class="aspect-video overflow-hidden rounded-xl border border-slate-300 dark:border-zinc-700">
-          <Image
-            src={post.frontmatter.heroImage}
-            alt="Thumbnail"
-            width={1200}
-            height={675}
-            class="h-full w-full object-cover"
-          />
-        </div>
+          <ul class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {
+              posts.map(post => (
+                <li class="flex">
+                  <a href={post.url} class="w-full">
+                    <div class="aspect-video overflow-hidden rounded-xl border border-slate-300 dark:border-zinc-700">
+                      <Image
+                        src={post.frontmatter.heroImage}
+                        alt="Thumbnail"
+                        width={1200}
+                        height={675}
+                        class="h-full w-full object-cover"
+                      />
+                    </div>
 
-        <div class="mt-3">
-          <h2 class="text-xl font-medium">
-            {post.frontmatter.title}
-          </h2>
+                    <div class="mt-3">
+                      <h2 class="text-xl font-medium">{post.frontmatter.title}</h2>
 
-          <p class="opacity-70">
-            {post.frontmatter.description}
-          </p>
-        </div>
-      </a>
-    </li>
-  ))}
-</ul>
-                 </section>
+                      <p class="opacity-70">{post.frontmatter.description}</p>
+                    </div>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
         <CreatedWithSection />
       </Content>
     </main>
